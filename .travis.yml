@@ -24,6 +24,10 @@ matrix:
           dist: xenial
           sudo: true
         - python: 3.6
+          env: DJANGO_VERSION=">=3.0,<3.1" XAPIAN_VERSION=1.4.9
+        - python: 3.6
+          env: DJANGO_VERSION=">=2.2,<2.3" XAPIAN_VERSION=1.4.9
+        - python: 3.6
           env: DJANGO_VERSION=">=2.1,<2.2" XAPIAN_VERSION=1.4.9
         - python: 3.6
           env: DJANGO_VERSION=">=2.0,<2.1" XAPIAN_VERSION=1.4.9
