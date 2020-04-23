@@ -7,7 +7,6 @@ import re
 import shutil
 import sys
 
-from django.utils import six
 from django.conf import settings
 from django.core.exceptions import ImproperlyConfigured
 from django.utils.encoding import force_text
@@ -354,7 +353,7 @@ class XapianSearchBackend(BaseSearchBackend):
             def _get_ngram_lengths(value):
                 values = value.split()
                 for item in values:
-                    for ngram_length in six.moves.range(NGRAM_MIN_LENGTH, NGRAM_MAX_LENGTH + 1):
+                    for ngram_length in range(NGRAM_MIN_LENGTH, NGRAM_MAX_LENGTH + 1):
                         yield item, ngram_length
 
             for obj in iterable:
@@ -364,8 +363,8 @@ class XapianSearchBackend(BaseSearchBackend):
                 def ngram_terms(value):
                     for item, length in _get_ngram_lengths(value):
                         item_length = len(item)
-                        for start in six.moves.range(0, item_length - length + 1):
-                            for size in six.moves.range(length, length + 1):
+                        for start in range(0, item_length - length + 1):
+                            for size in range(length, length + 1):
                                 end = start + size
                                 if end > item_length:
                                     continue
